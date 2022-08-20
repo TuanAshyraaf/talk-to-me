@@ -76,13 +76,11 @@ const face = document.getElementById('action-face');
 recognition.onresult = event => {
   let answered = false;
   const transcript = event.results[0][0].transcript;
-  console.log(transcript)
 
   for(let i = 0; i < commands.length; i++){
     for(let j = 0; j < commands[i].length; j++){
       if(transcript.toLowerCase() === commands[i][j] ){
         const randomIndex = getRandomReply(answers[i]);
-        console.log(randomIndex);
         reply.text = answers[i][randomIndex];
         synth.speak(reply);
         face.innerHTML = `<i class="fa-regular fa-face-laugh edit-face"></i>`
